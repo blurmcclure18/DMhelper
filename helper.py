@@ -4,6 +4,7 @@ ScreenManager:
     NPCScreen
     GenderSelectNPC
     GeneratedNPC
+    GeneratedTavern
     
 <HomeScreen>
     name: 'home'
@@ -20,6 +21,14 @@ ScreenManager:
         pos_hint: {'center_x':0.5, 'center_y':0.5}
         on_press:
             root.generateNPCScreen()
+
+    MDRaisedButton
+        id: generateTavernName
+        text: "Generate Tavern"
+        spacing: "15sp"
+        pos_hint: {'center_x':0.5, 'center_y':0.4}
+        on_press:
+            root.generateTavern()
 
 <NPCScreen>
     name: 'npcScreen'
@@ -182,6 +191,21 @@ ScreenManager:
         pos_hint: {'center_x':0.5,'center_y':0.1}
         on_press:
             app.goHome()
+
+<GeneratedTavern>
+    name: 'generatedTavern'
     
+    MDLabel:
+        id: generatedTavernName
+        text: "Tavern Name"
+        halign: 'center'
+        pos_hint: {'center_y':0.7}
+        font_style: 'H2'
+
+    MDFillRoundFlatButton:
+        text: 'Home'
+        pos_hint: {'center_x':0.5,'center_y':0.1}
+        on_press:
+            app.goHome()
 
 """
