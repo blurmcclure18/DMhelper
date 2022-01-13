@@ -1,95 +1,82 @@
 from kivymd.app import MDApp
-from kivymd.uix.dialog import MDDialog
 from nameDict import namesDict
+from helper import screen_helper
 from random import randint
 from kivy.lang.builder import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 
-screen_helper = """
-ScreenManager:
-    HomeScreen
-    NPCScreen
-    GeneratedNPC
-    
-<HomeScreen>
-    name: 'home'
-    MDLabel:
-        id: chooseOption
-        text: "Choose An Option"
-        halign: 'center'
-        pos_hint: {'center_y':0.9}
-        font_style: 'H2'
-        theme_text_color: "Custom"
-        text_color: 243,160,81,1
-    
-    MDRaisedButton
-        id: generateCharName
-        text: "Generate NPC"
-        pos_hint: {'center_x':0.5, 'center_y':0.5}
-        on_press:
-            root.generateNPCScreen()
-
-
-<NPCScreen>
-    name: 'npcScreen'
-
-    MDLabel:
-        id: generateNPC
-        text: "Select NPC Race"
-        halign: 'center'
-        pos_hint: {'center_y':0.9}
-        font_style: 'H2'
-        theme_text_color: "Custom"
-        text_color: 243,160,81,1
-    
-    MDRaisedButton
-        id: generateCharName
-        text: "Dwarf"
-        pos_hint: {'center_x':0.5, 'center_y':0.5}
-        on_press:
-            root.generateNPCRace('dwarf')
-
-    MDFillRoundFlatButton:
-        text: 'Home'
-        pos_hint: {'center_x':0.5,'center_y':0.1}
-        on_press:
-            app.goHome()
-
-<GeneratedNPC>
-    name: 'generatedNPC'
-
-    MDLabel:
-        id: generatedNPC
-        text: "Your NPC"
-        halign: 'center'
-        pos_hint: {'center_y':0.9}
-        font_style: 'H2'
-        theme_text_color: "Custom"
-        text_color: 243,160,81,1
-
-    MDFillRoundFlatButton:
-        text: 'Home'
-        pos_hint: {'center_x':0.5,'center_y':0.1}
-        on_press:
-            app.goHome()
-    
-
-"""
-
 # Create Screen classes (build logic functions for each screen in their class)
 class HomeScreen(Screen):
     def generateNPCScreen(self):
+        MDApp.get_running_app().root.current = 'genderSelectNPC'
+
+class GenderSelectNPC(Screen):
+    global gender
+    gender = ''
+
+    def selectGender(self,selection):
+        global gender
+        gender = selection
         MDApp.get_running_app().root.current = 'npcScreen'
-
 class NPCScreen(Screen):
-    def generateNPCRace(self,race):
-        if race == 'dwarf':
-            firstName = str(namesDict['dwarfNames'][0][randint(0,len(namesDict['dwarfNames'][0]))] + namesDict['dwarfNames'][1][randint(0,len(namesDict['dwarfNames'][1]))])
-            lastName = str(namesDict['dwarfNames'][4][randint(0,len(namesDict['dwarfNames'][4]))] + namesDict['dwarfNames'][5][randint(0,len(namesDict['dwarfNames'][5]))])
-            name = firstName + ' ' + lastName
-            print(name)
-        MDApp.get_running_app().root.current = 'generatedNPC'
 
+    def generateNPC(self,race):
+        global gender
+        if race == 'Dwarf':
+            firstName = str(namesDict['dwarfNames'][gender][0][randint(0,len(namesDict['dwarfNames'][gender][0]))] + namesDict['dwarfNames'][gender][1][randint(0,len(namesDict['dwarfNames'][gender][1]))])
+            lastName = str(namesDict['dwarfNames']['Last'][0][randint(0,len(namesDict['dwarfNames']['Last'][0]))] + namesDict['dwarfNames']['Last'][1][randint(0,len(namesDict['dwarfNames']['Last'][1]))])
+            name = str(firstName + ' ' + lastName).title()
+            self.manager.get_screen('generatedNPC').ids.generatedNPC.text = name
+        elif race == 'Elf':
+            firstName = str(namesDict['elfNames'][gender][0][randint(0,len(namesDict['elfNames'][gender][0]))])
+            lastName = str(namesDict['elfNames']['Last'][0][randint(0,len(namesDict['elfNames']['Last'][0]))])
+            name = str(firstName + ' ' + lastName).title()
+            self.manager.get_screen('generatedNPC').ids.generatedNPC.text = name
+            
+        elif race == 'Gnome':
+            firstName = str(namesDict['gnomeNames'][gender][0][randint(0,len(namesDict['gnomeNames'][gender][0]))] + namesDict['gnomeNames'][gender][1][randint(0,len(namesDict['gnomeNames'][gender][1]))])
+            lastName = str(namesDict['gnomeNames']['Last'][0][randint(0,len(namesDict['gnomeNames']['Last'][0]))] + namesDict['gnomeNames']['Last'][1][randint(0,len(namesDict['gnomeNames']['Last'][1]))])
+            name = str(firstName + ' ' + lastName).title()
+            self.manager.get_screen('generatedNPC').ids.generatedNPC.text = name
+        elif race == 'Goliath':
+            firstName = str(namesDict['goliathNames'][gender][0][randint(0,len(namesDict['goliathNames'][gender][0]))] + namesDict['goliathNames'][gender][1][randint(0,len(namesDict['goliathNames'][gender][1]))])
+            lastName = str(namesDict['goliathNames']['Last'][0][randint(0,len(namesDict['goliathNames']['Last'][0]))] + namesDict['goliathNames']['Last'][1][randint(0,len(namesDict['goliathNames']['Last'][1]))])
+            name = str(firstName + ' ' + lastName).title()
+            self.manager.get_screen('generatedNPC').ids.generatedNPC.text = name
+        elif race == 'Half-Elf':
+            firstName = str(namesDict['halfElfNames'][gender][0][randint(0,len(namesDict['halfElfNames'][gender][0]))] + namesDict['halfElfNames'][gender][1][randint(0,len(namesDict['halfElfNames'][gender][1]))])
+            lastVar = randint(0,1)
+            if lastVar == 0:
+                lastName = str(namesDict['halfElfNames']['Last'][0][randint(0,len(namesDict['halfElfNames']['Last'][0]))])
+            else:
+                lastName = str(namesDict['halfElfNames']['Last'][1][randint(0,len(namesDict['halfElfNames']['Last'][1]))] + namesDict['halfElfNames']['Last'][2][randint(0,len(namesDict['halfElfNames']['Last'][2]))])
+            name = str(firstName + ' ' + lastName).title()
+            self.manager.get_screen('generatedNPC').ids.generatedNPC.text = name
+        elif race == 'Half-Orc':
+            firstName = str(namesDict['halfOrcNames'][gender][0][randint(0,len(namesDict['halfOrcNames'][gender][0]))] + namesDict['halfOrcNames'][gender][1][randint(0,len(namesDict['halfOrcNames'][gender][1]))])
+            name = str(firstName).title()
+            self.manager.get_screen('generatedNPC').ids.generatedNPC.text = name
+        elif race == 'Halfling':
+            firstName = str(namesDict['halflingNames'][gender][0][randint(0,len(namesDict['halflingNames'][gender][0]))] + namesDict['halflingNames'][gender][1][randint(0,len(namesDict['halflingNames'][gender][1]))])
+            lastName = str(namesDict['halflingNames']['Last'][0][randint(0,len(namesDict['halflingNames']['Last'][0]))] + namesDict['halflingNames']['Last'][1][randint(0,len(namesDict['halflingNames']['Last'][1]))])
+            name = str(firstName + ' ' + lastName).title()
+            self.manager.get_screen('generatedNPC').ids.generatedNPC.text = name
+        elif race == 'Tiefling':
+            firstName = str(namesDict['tieflingNames'][gender][0][randint(0,len(namesDict['tieflingNames'][gender][0]))] + namesDict['tieflingNames'][gender][1][randint(0,len(namesDict['tieflingNames'][gender][1]))])
+            name = str(firstName).title()
+            self.manager.get_screen('generatedNPC').ids.generatedNPC.text = name
+        elif race == 'Human':
+            firstName = str(namesDict['humanNames'][gender][0][randint(0,len(namesDict['humanNames'][gender][0]))])
+            lastName = str(namesDict['humanNames']['Last'][0][randint(0,len(namesDict['humanNames']['Last'][0]))] + namesDict['humanNames']['Last'][1][randint(0,len(namesDict['humanNames']['Last'][1]))])
+            name = str(firstName + ' ' + lastName).title()
+            self.manager.get_screen('generatedNPC').ids.generatedNPC.text = name            
+        else:
+            pass
+
+        self.manager.get_screen('generatedNPC').ids.raceNPC.text = f"Race: {race}"
+        self.manager.get_screen('generatedNPC').ids.genderNPC.text = f"Gender: {gender}"
+
+        MDApp.get_running_app().root.current = 'generatedNPC'
 class GeneratedNPC(Screen):
     pass
 
@@ -100,6 +87,7 @@ class DMhelperApp(MDApp):
     
     def build(self):
         screen = Builder.load_string(screen_helper)
+        self.theme_cls.primary_palette = "Red"
         self.theme_cls.theme_style = 'Dark'
         return screen
     
@@ -108,6 +96,7 @@ class DMhelperApp(MDApp):
 sm = ScreenManager()
 sm.add_widget(HomeScreen(name='home'))
 sm.add_widget(NPCScreen(name='npcScreen'))
+sm.add_widget(GenderSelectNPC(name='genderSelectNPC'))
 sm.add_widget(GeneratedNPC(name='generatedNPC'))
 
 if __name__ == '__main__':
