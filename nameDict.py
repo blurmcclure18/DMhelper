@@ -1,0 +1,18 @@
+from unicodedata import name
+
+
+namesDict = {
+    'dwarfNames':{
+        0: ["Ad", "Am", "Arm", "Baer", "Daer", "Bal", "Ban", "Bar", "Bel", "Ben", "Ber", "Bhal", "Bhar", "Bhel", "Bram", "Bran", "Brom", "Brum", "Bun", "Dal", "Dar", "Dol", "Dul", "Eb", "Em", "Erm", "Far", "Gal", "Gar", "Ger", "Gim", "Gral", "Gram", "Gran", "Grem", "Gren", "Gril", "Gry", "Gul", "Har", "Hjal", "Hjol", "Hjul", "Hor", "Hul", "Hur", "Kar", "Khar", "Kram", "Krom", "Krum", "Mag", "Mal", "Mel", "Mor", "Muir", "Mur", "Rag", "Ran", "Reg", "Rot", "Thal", "Thar", "Thel", "Ther", "Tho", "Thor", "Thul", "Thur", "Thy", "Tor", "Ty", "Um", "Urm", "Von"],
+
+        1: ["adin", "bek", "brek", "dahr", "dain", "dal", "dan", "dar", "dek", "dir", "dohr", "dor", "drak", "dram", "dren", "drom", "drum", "drus", "duhr", "dur", "dus", "garn", "gram", "gran", "grim", "grom", "gron", "grum", "grun", "gurn", "gus", "iggs", "kahm", "kam", "kohm", "kom", "kuhm", "kum", "kyl", "man", "mand", "mar", "mek", "miir", "min", "mir", "mond", "mor", "mun", "mund", "mur", "mus", "myl", "myr", "nam", "nar", "nik", "nir", "nom", "num", "nur", "nus", "nyl", "rak", "ram", "ren", "rig", "rigg", "rik", "rim", "rom", "ron", "rum", "rus", "ryl", "tharm", "tharn", "thran", "thrum", "thrun"],
+
+        2: ["An", "Ar", "Baer", "Bar", "Bel", "Belle", "Bon", "Bonn", "Braen", "Bral", "Bralle", "Bran", "Bren", "Bret", "Bril", "Brille", "Brol", "Bron", "Brul", "Bryl", "Brylle", "Bryn", "Bryt", "Byl", "Bylle", "Daer", "Dear", "Dim", "Ed", "Ein", "El", "Gem", "Ger", "Gwan", "Gwen", "Gwin", "Gwyn", "Gym", "Ing", "Jen", "Jenn", "Jin", "Jyn", "Kait", "Kar", "Kat", "Kath", "Ket", "Las", "Lass", "Les", "Less", "Lyes", "Lys", "Lyss", "Maer", "Maev", "Mar", "Mis", "Mist", "Myr", "Mys", "Myst", "Naer", "Nal", "Nas", "Nass", "Nes", "Nis", "Nys", "Raen", "Ran", "Red", "Reyn", "Run", "Ryn", "Sar", "Sol", "Tas", "Taz", "Tis", "Tish", "Tiz", "Tor", "Tys", "Tysh"],
+
+        3:["belle", "bera", "delle", "deth", "dielle", "dille", "dish", "dora", "dryn", "dyl", "giel", "glia", "glian", "gwyn", "la", "leen", "leil", "len", "lin", "linn", "lyl", "lyn", "lynn", "ma", "mera", "mora", "mura", "myl", "myla", "nan", "nar", "nas", "nera", "nia", "nip", "nis", "niss", "nora", "nura", "nyl", "nys", "nyss", "ra", "ras", "res", "ri", "ria", "rielle", "rin", "ris", "ros", "ryl", "ryn", "sael", "selle", "sora", "syl", "thel", "thiel", "tin", "tyn", "va", "van", "via", "vian", "waen", "win", "wyn", "wynn"],
+
+        4:["Battle", "Big", "Black", "Blood", "Bold", "Boulder", "Brave", "Brawn", "Bright", "Broad", "Bronze", "Brood", "Burrow", "Cold", "Dark", "Deep", "Drunk", "Even", "Ever", "Fire", "First", "Flint", "Frost", "Frozen", "Giant", "Goblin", "Gold", "Golden", "Gray", "Great", "Half", "Hammer", "Hard", "Iron", "Keen", "Kind", "Last", "Light", "Loud", "Mad", "Marble", "Might", "Molten", "Mountain", "Silver", "Smug", "Stark", "Steel", "Stern", "Stone", "Storm", "Stout", "Strong", "Thunder", "Troll", "True", "Wild"],
+
+        5:["ale", "anvil", "axe", "back", "bane", "beard", "belch", "belt", "blade", "bleeder", "blood", "boot", "boots", "bottom", "braid", "branch", "breaker", "breath", "brow", "buster", "delver", "eye", "eyes", "fall", "feast", "finder", "fist", "fists", "flight", "force", "forge", "found", "front", "fury", "gift", "grace", "grip", "guard", "hammer", "hand", "handle", "head", "heart", "helm", "hold", "horn", "kin", "kind", "kith", "mane", "mantle", "mask", "might", "pass", "past", "pride", "reach", "rest", "roar", "rock", "shaper", "shield", "song", "stand", "stone", "storm", "strike", "tale", "tankard", "ward"],
+    },
+}
