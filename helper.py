@@ -32,7 +32,7 @@ ScreenManager:
         font_style: 'H2'
 
     MDRaisedButton
-        id: generateDwarfName
+        id: generateDwarf
         text: "Dwarf"
         spacing: '15sp'
         pos_hint: {'center_x':0.5, 'center_y':0.70}
@@ -40,7 +40,7 @@ ScreenManager:
             root.generateNPC('Dwarf')
     
     MDRaisedButton
-        id: generateElfName
+        id: generateElf
         text: "Elf"
         spacing: '15sp'
         pos_hint: {'center_x':0.5, 'center_y':0.65}
@@ -48,7 +48,7 @@ ScreenManager:
             root.generateNPC('Elf')
     
     MDRaisedButton
-        id: generateHumanName
+        id: generateHuman
         text: "Human"
         spacing: '15sp'
         pos_hint: {'center_x':0.5, 'center_y':0.60}
@@ -56,7 +56,7 @@ ScreenManager:
             root.generateNPC('Human')
     
     MDRaisedButton
-        id: generateGnomeName
+        id: generateGnome
         text: "Gnome"
         spacing: '15sp'
         pos_hint: {'center_x':0.5, 'center_y':0.55}
@@ -64,7 +64,7 @@ ScreenManager:
             root.generateNPC('Gnome')
     
     MDRaisedButton
-        id: generateGoliathName
+        id: generateGoliath
         text: "Goliath"
         spacing: '15sp'
         pos_hint: {'center_x':0.5, 'center_y':0.50}
@@ -72,7 +72,7 @@ ScreenManager:
             root.generateNPC('Goliath')
     
     MDRaisedButton
-        id: generateHalfElfName
+        id: generateHalfElf
         text: "Half-Elf"
         spacing: '15sp'
         pos_hint: {'center_x':0.5, 'center_y':0.45}
@@ -80,7 +80,7 @@ ScreenManager:
             root.generateNPC('Half-Elf')
 
     MDRaisedButton
-        id: generateHalfOrcName
+        id: generateHalfOrc
         text: "Half-Orc"
         spacing: '15sp'
         pos_hint: {'center_x':0.5, 'center_y':0.40}
@@ -88,7 +88,7 @@ ScreenManager:
             root.generateNPC('Half-Orc')
 
     MDRaisedButton
-        id: generateHalflingName
+        id: generateHalfling
         text: "Halfling"
         spacing: '15sp'
         pos_hint: {'center_x':0.5, 'center_y':0.35}
@@ -96,12 +96,20 @@ ScreenManager:
             root.generateNPC('Halfling')
 
     MDRaisedButton
-        id: generateTieflingName
+        id: generateTiefling
         text: "Tiefling"
         spacing: '15sp'
         pos_hint: {'center_x':0.5, 'center_y':0.30}
         on_press:
             root.generateNPC('Tiefling')
+
+    MDRaisedButton
+        id: generateRandom
+        text: "Random"
+        spacing: '15sp'
+        pos_hint: {'center_x':0.5, 'center_y':0.25}
+        on_press:
+            root.generateRandomNPC()
 
     MDFillRoundFlatButton:
         text: 'Home'

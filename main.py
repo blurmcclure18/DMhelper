@@ -20,6 +20,11 @@ class GenderSelectNPC(Screen):
         MDApp.get_running_app().root.current = 'npcScreen'
 class NPCScreen(Screen):
 
+    def generateRandomNPC(self):
+        race = ['Dwarf','Elf','Gnome','Goliath','Half-Elf','Half-Orc','Halfling','Tiefling','Human']
+        randomRace = race[randint(0,len(race))]
+        self.generateNPC(randomRace)
+
     def generateNPC(self,race):
         global gender
         if race == 'Dwarf':
