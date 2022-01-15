@@ -262,8 +262,8 @@ ScreenManager:
         id: wildmagicdescription
         text: "wild magic description"
         halign: 'center'
-        pos_hint: {'center_y':0.7}
-        font_style: 'H2'
+        pos_hint: {'center_y':0.5}
+        font_style: 'H3'
 
     MDFillRoundFlatButton:
         text: 'Home'
