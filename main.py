@@ -119,9 +119,15 @@ class WildMagic(Screen):
         self.manager.get_screen('wildmagicdescription').ids.wildmagicdescription.text = description
 
         MDApp.get_running_app().root.current = 'wildmagicdescription'
+    
+    def clearText(self):
+        self.manager.get_screen('wildmagic').ids.rollInput.text = ''
+        MDApp.get_running_app().root.current = 'home'
 
 class WildMagicDescription(Screen):
-    pass
+    def clearText(self):
+        self.manager.get_screen('wildmagic').ids.rollInput.text = ''
+        MDApp.get_running_app().root.current = 'home'
 
 # Create App class to build and run
 class DMhelperApp(MDApp):

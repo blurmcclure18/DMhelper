@@ -253,7 +253,7 @@ ScreenManager:
         text: 'Home'
         pos_hint: {'center_x':0.5,'center_y':0.1}
         on_press:
-            app.goHome()
+            root.clearText()
 
 <WildMagicDescription>
     name: 'wildmagicdescription'
@@ -269,6 +269,6 @@ ScreenManager:
         text: 'Home'
         pos_hint: {'center_x':0.5,'center_y':0.1}
         on_press:
-            app.goHome()
+            root.clearText()
 
 """
