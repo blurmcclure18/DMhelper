@@ -5,6 +5,8 @@ ScreenManager:
     GenderSelectNPC
     GeneratedNPC
     GeneratedTavern
+    WildMagic
+    WildMagicDescription
     
 <HomeScreen>
     name: 'home'
@@ -29,6 +31,13 @@ ScreenManager:
         pos_hint: {'center_x':0.5, 'center_y':0.4}
         on_press:
             root.generateTavern()
+    
+    MDRaisedButton
+        id: wildMagic
+        text: "Wild Magic"
+        pos_hint: {'center_x':0.5, 'center_y':0.3}
+        on_press:
+            root.wildMagicScreen()
 
 <NPCScreen>
     name: 'npcScreen'
@@ -198,6 +207,60 @@ ScreenManager:
     MDLabel:
         id: generatedTavernName
         text: "Tavern Name"
+        halign: 'center'
+        pos_hint: {'center_y':0.7}
+        font_style: 'H2'
+
+    MDFillRoundFlatButton:
+        text: 'Home'
+        pos_hint: {'center_x':0.5,'center_y':0.1}
+        on_press:
+            app.goHome()
+
+<WildMagic>:
+    name: 'wildmagic'
+    
+    MDTextField:
+        id: rollInput
+        hint_text: "Enter Roll"
+        helper_text: "Enter the d100 roll of your player"
+        helper_text_mode:"on_focus"
+        icon_right: "dice-d20"
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x':0.5, 'center_y':0.6}
+        size_hint_x:None
+        width:300
+    
+    MDLabel:
+        text: "Wild Magic Surge"
+        halign: 'center'
+        pos_hint: {'center_y':0.8}
+        font_style: 'H2'
+    
+    MDFillRoundFlatButton:
+        text:'Search'
+        pos_hint: {'center_x':0.5, 'center_y':0.5}
+        on_press:
+            root.searchWildMagic()
+    
+    MDFillRoundFlatButton:
+        text: 'Roll'
+        pos_hint: {'center_x':0.5, 'center_y':0.4}
+        on_press:
+            root.rollWildMagic()
+        
+    MDFillRoundFlatButton:
+        text: 'Home'
+        pos_hint: {'center_x':0.5,'center_y':0.1}
+        on_press:
+            app.goHome()
+
+<WildMagicDescription>
+    name: 'wildmagicdescription'
+    
+    MDLabel:
+        id: wildmagicdescription
+        text: "wild magic description"
         halign: 'center'
         pos_hint: {'center_y':0.7}
         font_style: 'H2'

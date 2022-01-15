@@ -2,6 +2,7 @@ from kivymd.app import MDApp
 from nameDict import namesDict
 from tavernsDict import tavernNames
 from helper import screen_helper
+from wildMagicDict import wildMagic
 from random import randint
 from kivy.lang.builder import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -15,6 +16,9 @@ class HomeScreen(Screen):
         tavernName = str(tavernNames[0][randint(0,len(tavernNames[0])-1)] + " " + tavernNames[1][randint(0,len(tavernNames[1])-1)] +" " + tavernNames[2][randint(0,len(tavernNames[2])-1)])
         self.manager.get_screen('generatedTavern').ids.generatedTavernName.text = tavernName
         MDApp.get_running_app().root.current = 'generatedTavern'
+    
+    def wildMagicScreen(self):
+        MDApp.get_running_app().root.current = 'wildmagic'
 
 
 class GenderSelectNPC(Screen):
@@ -95,6 +99,30 @@ class GeneratedNPC(Screen):
 class GeneratedTavern(Screen):
     pass
 
+class WildMagic(Screen):
+    def searchWildMagic(self):
+        input = round(int(self.manager.get_screen('wildmagic').ids.rollInput.text))
+
+        roll = int(input / 2)
+
+        description = wildMagic[roll]
+
+        self.manager.get_screen('wildmagicdescription').ids.wildmagicdescription.text = description
+
+        MDApp.get_running_app().root.current = 'wildmagicdescription'
+    
+    def rollWildMagic(self):
+        roll = round(randint(1,100) / 2)
+
+        description = wildMagic[roll]
+
+        self.manager.get_screen('wildmagicdescription').ids.wildmagicdescription.text = description
+
+        MDApp.get_running_app().root.current = 'wildmagicdescription'
+
+class WildMagicDescription(Screen):
+    pass
+
 # Create App class to build and run
 class DMhelperApp(MDApp):
     def goHome(self):
@@ -114,6 +142,8 @@ sm.add_widget(NPCScreen(name='npcScreen'))
 sm.add_widget(GenderSelectNPC(name='genderSelectNPC'))
 sm.add_widget(GeneratedNPC(name='generatedNPC'))
 sm.add_widget(GeneratedTavern(name='generatedTavern'))
+sm.add_widget(WildMagic(name='wildmagic'))
+sm.add_widget(WildMagicDescription(name='wildmagicdescription'))
 
 if __name__ == '__main__':
     DMhelperApp().run()
