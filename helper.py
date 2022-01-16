@@ -4,6 +4,9 @@ ScreenManager:
     NPCScreen
     GenderSelectNPC
     GeneratedNPC
+    GeneratedTavern
+    WildMagic
+    WildMagicDescription
     
 <HomeScreen>
     name: 'home'
@@ -21,6 +24,21 @@ ScreenManager:
         on_press:
             root.generateNPCScreen()
 
+    MDRaisedButton
+        id: generateTavernName
+        text: "Generate Tavern"
+        spacing: "15dp"
+        pos_hint: {'center_x':0.5, 'center_y':0.4}
+        on_press:
+            root.generateTavern()
+    
+    MDRaisedButton
+        id: wildMagic
+        text: "Wild Magic"
+        pos_hint: {'center_x':0.5, 'center_y':0.3}
+        on_press:
+            root.wildMagicScreen()
+
 <NPCScreen>
     name: 'npcScreen'
 
@@ -34,7 +52,7 @@ ScreenManager:
     MDRaisedButton
         id: generateDwarf
         text: "Dwarf"
-        spacing: '15sp'
+        spacing: '15dp'
         pos_hint: {'center_x':0.5, 'center_y':0.70}
         on_press:
             root.generateNPC('Dwarf')
@@ -42,7 +60,7 @@ ScreenManager:
     MDRaisedButton
         id: generateElf
         text: "Elf"
-        spacing: '15sp'
+        spacing: '15dp'
         pos_hint: {'center_x':0.5, 'center_y':0.65}
         on_press:
             root.generateNPC('Elf')
@@ -50,7 +68,7 @@ ScreenManager:
     MDRaisedButton
         id: generateHuman
         text: "Human"
-        spacing: '15sp'
+        spacing: '15dp'
         pos_hint: {'center_x':0.5, 'center_y':0.60}
         on_press:
             root.generateNPC('Human')
@@ -58,7 +76,7 @@ ScreenManager:
     MDRaisedButton
         id: generateGnome
         text: "Gnome"
-        spacing: '15sp'
+        spacing: '15dp'
         pos_hint: {'center_x':0.5, 'center_y':0.55}
         on_press:
             root.generateNPC('Gnome')
@@ -66,7 +84,7 @@ ScreenManager:
     MDRaisedButton
         id: generateGoliath
         text: "Goliath"
-        spacing: '15sp'
+        spacing: '15dp'
         pos_hint: {'center_x':0.5, 'center_y':0.50}
         on_press:
             root.generateNPC('Goliath')
@@ -74,7 +92,7 @@ ScreenManager:
     MDRaisedButton
         id: generateHalfElf
         text: "Half-Elf"
-        spacing: '15sp'
+        spacing: '15dp'
         pos_hint: {'center_x':0.5, 'center_y':0.45}
         on_press:
             root.generateNPC('Half-Elf')
@@ -82,7 +100,7 @@ ScreenManager:
     MDRaisedButton
         id: generateHalfOrc
         text: "Half-Orc"
-        spacing: '15sp'
+        spacing: '15dp'
         pos_hint: {'center_x':0.5, 'center_y':0.40}
         on_press:
             root.generateNPC('Half-Orc')
@@ -90,7 +108,7 @@ ScreenManager:
     MDRaisedButton
         id: generateHalfling
         text: "Halfling"
-        spacing: '15sp'
+        spacing: '15dp'
         pos_hint: {'center_x':0.5, 'center_y':0.35}
         on_press:
             root.generateNPC('Halfling')
@@ -98,7 +116,7 @@ ScreenManager:
     MDRaisedButton
         id: generateTiefling
         text: "Tiefling"
-        spacing: '15sp'
+        spacing: '15dp'
         pos_hint: {'center_x':0.5, 'center_y':0.30}
         on_press:
             root.generateNPC('Tiefling')
@@ -106,7 +124,7 @@ ScreenManager:
     MDRaisedButton
         id: generateRandom
         text: "Random"
-        spacing: '15sp'
+        spacing: '15dp'
         pos_hint: {'center_x':0.5, 'center_y':0.25}
         on_press:
             root.generateRandomNPC()
@@ -130,14 +148,14 @@ ScreenManager:
     MDRaisedButton
         id: genderMale
         text: "Male"
-        pos_hint: {'center_x':0.4, 'center_y':0.5}
+        pos_hint: {'center_x':0.3, 'center_y':0.5}
         on_press:
             root.selectGender('Male')
     
     MDRaisedButton
         id: genderFemale
         text: "Female"
-        pos_hint: {'center_x':0.6, 'center_y':0.5}
+        pos_hint: {'center_x':0.7, 'center_y':0.5}
         on_press:
             root.selectGender('Female')
 
@@ -161,14 +179,14 @@ ScreenManager:
         id: raceNPC
         text: "NPC Race"
         halign: 'center'
-        pos_hint: {'center_y':0.8}
+        pos_hint: {'center_y':0.7}
         font_style: 'H3'
 
     MDLabel:
         id: genderNPC
         text: "NPC Gender"
         halign: 'center'
-        pos_hint: {'center_y':0.7}
+        pos_hint: {'center_y':0.5}
         font_style: 'H3'
     
     MDFillRoundFlatButton:
@@ -182,6 +200,75 @@ ScreenManager:
         pos_hint: {'center_x':0.5,'center_y':0.1}
         on_press:
             app.goHome()
+
+<GeneratedTavern>
+    name: 'generatedTavern'
     
+    MDLabel:
+        id: generatedTavernName
+        text: "Tavern Name"
+        halign: 'center'
+        pos_hint: {'center_y':0.7}
+        font_style: 'H2'
+
+    MDFillRoundFlatButton:
+        text: 'Home'
+        pos_hint: {'center_x':0.5,'center_y':0.1}
+        on_press:
+            app.goHome()
+
+<WildMagic>:
+    name: 'wildmagic'
+    
+    MDTextField:
+        id: rollInput
+        hint_text: "Enter Roll"
+        helper_text: "Enter the d100 roll of your player"
+        helper_text_mode:"on_focus"
+        icon_right: "dice-d20"
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x':0.5, 'center_y':0.6}
+        size_hint_x:None
+        width:300
+    
+    MDLabel:
+        text: "Wild Magic Surge"
+        halign: 'center'
+        pos_hint: {'center_y':0.8}
+        font_style: 'H2'
+    
+    MDFillRoundFlatButton:
+        text:'Search'
+        pos_hint: {'center_x':0.5, 'center_y':0.5}
+        on_press:
+            root.searchWildMagic()
+    
+    MDFillRoundFlatButton:
+        text: 'Roll'
+        pos_hint: {'center_x':0.5, 'center_y':0.4}
+        on_press:
+            root.rollWildMagic()
+        
+    MDFillRoundFlatButton:
+        text: 'Home'
+        pos_hint: {'center_x':0.5,'center_y':0.1}
+        on_press:
+            root.clearText()
+
+<WildMagicDescription>
+    name: 'wildmagicdescription'
+    
+    MDLabel:
+        id: wildmagicdescription
+        text: "wild magic description"
+        halign: 'center'
+        pos_hint: {'center_y':0.5}
+        font_style: 'H3'
+
+    MDFillRoundFlatButton:
+        text: 'Home'
+        pos_hint: {'center_x':0.5,'center_y':0.1}
+        on_press:
+            root.clearText()
 
 """
